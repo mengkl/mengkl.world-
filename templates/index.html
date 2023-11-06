@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mengkl Blog</title>
+    <base href="/">
+    <link type="text/css" rel="stylesheet" href="static/css/mengklindex.css">
+</head>
+<body>
+<!--[00] [头部导航栏] [Start] -->
+<div class="mengkl_00_container">
+    <div class="mengkl_00_border mengkl_00_center">
+        <a href="">
+            <img href="" class="mengkl_00_img" src="https://q1.qlogo.cn/g?b=qq&nk=599487077&s=640" alt=""/>
+        </a>
+        {% for obj in app_name %}
+        <a href="{{ obj.my_apps_en }}/" class="mengkl_00_btn mengkl_00_btn_a three-d">
+            <div class="mengkl_00_btn_text_center">
+                {{ obj.my_apps_cn }}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<!--[00] [头部导航栏] [End] -->
+<div class="mengkl_grid_container">
+    <!--[01] [左侧栏] [Start] -->
+    <div class="mengkl_01_left_row">
+
+        <div class="mengkl_01_left_card_3">
+            <img src="https://i.stay.pub/img/7ecf89dbc6de1d7f.jpg">
+            <p>Faber est suae quisque fortunae !</p>
+        </div>
+
+        <div class="mengkl_01_left_card_1">
+            <div class="mengkl_01_left_card_2">
+                <div class="mengkl_01_card_box_text" style="padding-top: 45px">文章总数 :</div>
+                <div class="mengkl_01_card_box">
+                    <div class="mengkl_01_card_box_text">
+                        <div id="numbers0"></div>
+                    </div>
+                </div>
+                <div class="mengkl_01_card_box_text">评论总数 :</div>
+                <div class="mengkl_01_card_box">
+                    <div class="mengkl_01_card_box_text">
+                        <div id="numbers1"></div>
+                    </div>
+                </div>
+                <div class="mengkl_01_card_box_text">运行时间 :</div>
+                <div class="mengkl_01_card_box">
+                    <div class="mengkl_01_card_box_text">
+                        <div id="numbers2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--[01] [左侧栏] [End] -->
+
+    <!--[02] [右侧文章列表] [Start] -->
+    <div class="mengkl_02_right_row">
+
+
+        {% for obj in page_obj %}
+        <div class="mengkl_02_card_1">
+            <div class="mengkl_02_card_1_0">
+                <h2> {{ obj.title }} </h2>
+            </div>
+            <div class="mengkl_02_card_1_1">
+                <h5> 作者: {{ obj.author }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间: {{ obj.created_time }}</h5>
+            </div>
+
+            <a href="/passage/{{ obj.pid }}/" style="text-decoration: none;color: black;" class="a-tag-color-black">
+                <!-- 我也不知道为什么这里要用内联才有效  -->
+                <div class="mengkl_02_card_1_2_container">
+                    <div class="mengkl_02_card_1_2_col1">
+                        <h3>
+                            {{ obj.abstract_after_changed|safe }}
+                        </h3>
+                    </div>
+                    {% if obj.absimg %}
+                    <div class="mengkl_02_card_1_2_col2">
+                        <div class="mengkl_02_card_1_2_col2_img">
+                            <img src="{{ obj.absimg }}" alt=""/>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        <!-- [底部翻页] [Start] -->
+        <br/>
+        {% if is_paginated %}
+        <div class="mengkl_valign" style="margin-right: 8vw!important;">
+            <div class="mengkl_center">
+                <div class="mengkl_grid_container">
+                    <div class="mengkl_03_col">
+                        <div class=" arrow-container">
+                            {% if page_obj.has_previous %}
+                            {% if page_obj.previous_page_number == 1 %}
+                            <a href="" class="arrow-left"></a>
+                            {% else %}
+                            <a href="/page/{{ page_obj.previous_page_number }}"
+                               class="arrow-left"></a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="mengkl_03_col" style="margin-top: 9px;margin-left: -18px;">
+                        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                    </div>
+                    <div class="mengkl_03_col">
+                        {% if page_obj.has_next %}
+                        <div class=" arrow-container">
+                            <a href="/page/{{ page_obj.next_page_number }}" class="arrow-right"></a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <br/>
+        <!-- [底部翻页] [End] -->
+    </div>
+    <!--[02] [右侧文章列表] [End] -->
+</div>
+
+<script type="text/javascript">
+    const target0 = '{{ passage_count|safe }}';
+    const target1 = '{{ comment_count|safe }}';
+
+    // 初始时间，月/日/年 时:分:秒
+    let totalSeconds = (new Date() - new Date("9/2/2023 12:00:00")) / 1000;
+    const years = Math.floor(totalSeconds / (3600 * 24 * 365));
+    totalSeconds -= years * 3600 * 24 * 365;
+
+    const months = Math.floor(totalSeconds / (3600 * 24 * 30));
+    totalSeconds -= months * 3600 * 24 * 30;
+
+    const days = Math.floor(totalSeconds / (3600 * 24));
+
+    const target2 = "本站勉强运行:" + years + "年" + months + "月" + days + "天";
+
+    //[公共] 初始随机字符范围
+    const src = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+    // 0
+    let randomStr0 = randomString(target0.length, src);
+    RandomNum(target0, randomStr0, 0, "numbers0")
+    // 1
+    let randomStr1 = randomString(target1.length, src);
+    RandomNum(target1, randomStr1, 0, "numbers1")
+    // 2
+    let randomStr2 = randomString(target2.length, src);
+    RandomNum(target2, randomStr2, 0, "numbers2")
+
+    //[公共]生成初始随机字符串
+    function randomString(length, chars) {
+        let result = '';
+        for (let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
+
+    // [公共]随机数字函数
+    function RandomNum(target, randomStr, count, htmlid) {
+        setInterval(async () => {
+            if (count < target.length - 1) {
+                // 多次切换随机字符
+                for (let i = 0; i < 5; i++) {
+                    let randomChar = String.fromCharCode(Math.floor(Math.random() * 94) + 33);
+                    randomStr = replaceChar(randomStr, count, randomChar);
+                    document.getElementById(htmlid).textContent = randomStr;
+                    await sleep(100);
+                }
+
+                // 最后替换为目标字符
+                randomStr = replaceChar(randomStr, count, target[count]);
+                document.getElementById(htmlid).textContent = randomStr;
+                count++;
+            }
+        }, 500);
+    }
+
+    // [公共]替换指定位置的字符
+    function replaceChar(str, index, newChar) {
+        return str.substring(0, index) + newChar + str.substring(index + 1);
+    }
+
+    // [公共]暂停函数
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+    /*[公共]*/
+    @font-face {
+        font-family: KLGY2;
+        src: url(https://js.fallsoft.cn/LXGWWenKai-Regular.ttf);
+    }
+
+    body {
+        background-image: radial-gradient(73% 147%, #E1ECC8 59%, #F7FFE5 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.50) 47%, rgba(0, 0, 0, 0.50) 100%);
+        background-blend-mode: screen;
+        height: 100vh;
+    }
+
+    .mengkl_center {
+        display: block !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+
+    .mengkl_valign {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        align-items: center !important;
+    }
+
+    .mengkl_grid_container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .mengkl_grid_container_list {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-gap: 2vw;
+    }
+
+    .mengkl_container {
+        padding-top: 5vh;
+        padding-left: 30vw;
+        padding-right: 30vw;
+    }
+
+    .mengkl_container_list {
+        padding-top: 5vh;
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+
+    .three-d {
+        color: #fff;
+        background-color: #aaaaaa;
+        text-shadow: -2px 2px 2px #555555,
+        -2px 2px 2px #717171,
+        -2px 2px 2px #717171,
+        -2px 2px 2px #717171,
+        -2px 2px 2px #717171,
+        -2px 2px 2px #717171;
+        box-shadow: 0px 5px 0px 0px #515151;
+        transition: all .1s;
+    }
+
+    .three-d:hover {
+        background-color: rgb(160, 196, 157);
+        box-shadow: 0px 5px 0px 0px #82ae7e;
+        text-shadow: -2px 2px 2px rgb(160, 196, 157);
+
+    }
+
+    .three-d:active {
+        transform: translate(0, 4px);
+        box-shadow: 0 1px 0 0 #82ae7e;
+    }
+
+    /*[mengkl_00] [头部导航栏]*/
+    .mengkl_00_container {
+        padding-top: 2vh;
+        padding-left: 15vw;
+        padding-right: 15vw;
+    }
+
+    .mengkl_00_border {
+        transition: 0.3s;
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-style: solid;
+        border-width: 0;
+        padding: 1vmin;
+        border-radius: 0.9vmax;
+        background-color: #ffff;
+        box-shadow: rgba(40, 84, 48, 0.32) 0.4vw 0.8vh,
+        rgba(40, 84, 48, 0.3) 0.8vw 1.6vh,
+        rgba(40, 84, 48, 0.2) 1.2vw 2.4vh,
+        rgba(40, 84, 48, 0.1) 1.6vw 3.2vh,
+        rgba(40, 84, 48, 0.05) 2vw 4vh;
+    }
+
+    .mengkl_00_border:hover {
+        transition: 0.5s;
+        transition-timing-function: ease-in-out;
+        border-style: solid;
+        box-shadow: rgba(40, 84, 48, 0.05) 0 0,
+        rgba(40, 84, 48, 0.1) 0 0,
+        rgba(40, 84, 48, 0.05) 0 0;
+    }
+
+    .mengkl_00_center {
+        display: flex;
+        align-items: center;
+        height: auto;
+    }
+
+    .mengkl_00_center img {
+        height: 8vh;
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 3px;
+        border-color: #6C342840;
+    }
+
+    .mengkl_00_img {
+        margin-left: 5vw;
+        transition: transform 2s;
+    }
+
+    .mengkl_00_img:hover {
+        transition: transform .5s;
+        transform: rotate(-720deg)
+    }
+
+    .mengkl_00_img:active {
+        transition: transform 1.5s;
+        transform: rotate(-360deg)
+    }
+
+    .mengkl_00_btn {
+        margin-left: 10vw; /*按钮间隔*/
+        width: 5vw; /*按钮宽度*/
+        padding: 1vw; /*按钮内边距*/
+        border-style: solid; /*按钮边框样式*/
+        border-width: 0; /*按钮边框宽度*/
+        border-radius: 15px; /*按钮边框圆角*/
+    }
+
+    .mengkl_00_btn_text_center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 1vw;
+        font-size: 1.5vw
+    }
+
+    .mengkl_00_btn_a {
+        text-decoration: none;
+        color: white;
+    }
+
+    /*[mengkl_01] [搜索]*/
+    .mengkl_01_1 {
+        overflow: hidden;
+        height: 60px;
+        border-radius: 20px;
+        display: grid;
+        align-items: center;
+        background-color: rgba(255, 255, 255, .9);
+        box-shadow: rgba(0, 0, 0, .2) 0 0 10px;
+    }
+
+    .mengkl_01_1_input {
+        font-family: KLGY2;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        margin: 0;
+        padding: 0px 0px 0px 15px;
+        background: 0 0;
+        text-align: left;
+        color: inherit;
+        width: 100%;
+    }
+
+    .mengkl_01_1_btn {
+        font-family: KLGY2;
+        border-radius: 0 20px 20px 0;
+        height: 60px;
+        background-color: #adacac;
+        border-style: none;
+        color: white;
+        font-size: large;
+        width: 100%;
+    }
+
+    .mengkl_01_1_col_1 {
+        grid-column: span 9;
+        border-style: solid;
+        border-color: #adacac;
+        border-radius: 20px 0 0 20px;
+        display: grid;
+        align-items: center;
+    }
+
+    .mengkl_01_1_col_2 {
+        grid-column: span 3;
+    }
+
+
+    /*[mengkl_03] [Tag]*/
+    .mengkl_03_col {
+        grid-column: span 6
+    }
+
+    .mengkl_03_card {
+        font-family: 'KLGY2';
+        overflow: hidden;
+        height: auto;
+        border-radius: 9px;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, .9);
+        box-shadow: rgba(0, 0, 0, .2) 0 0 10px;
+        word-break: break-word;
+        line-height: 1.5;
+    }
+
+    .mengkl_03_card a {
+        color: #717171;
+        text-decoration: none;
+        margin: 5px;
+    }
+
+    .mengkl_03_c_grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-gap: 1vw;
+    }
+
+    .mengkl_03_c_col {
+        grid-column: span 3;
+    }
+
+    /*[mengkl_04] [搜索内容]*/
+    .mengkl_04_col {
+        grid-column: span 6;
+    }
+
+    .mengkl_04_col li {
+        list-style: trad-chinese-formal;
+        margin: 5px;
+    }
+    .a-tag-color-black{
+        text-decoration: none;
+        color: black;
+    }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <title>关于我</title>
+</head>
+<body>
+
+<h1>没错,在这里只有HTML</h1>
+
+<!--[头部栏][start]-->
+<div>
+        <a href="">首页</a>
+    {% for obj in app_name %}
+        <a href="{{ obj.my_apps_en }}/">
+        {{ obj.my_apps_cn }}
+        </a>
+    {% endfor %}
+</div>
+<!-- [头部栏][end]-->
+
+<!--[body][start]-->
+{% for obj in elements %}
+<!--[element][start]-->
+<ul>
+    <li>
+        <h2>{{ obj.title }}</h2>
+        <div>{{ obj.body_after_changed|safe }}</div>
+    </li>
+</ul>
+<hr>
+<!--[element][end]-->
+{% endfor %}
+<!--[body][end]-->
+
+</body>
+</html>
