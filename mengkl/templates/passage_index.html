@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这是文章目录</title>
+</head>
+<body>
+<h1>这里是文章目录捏</h1>
+<hr>
+{% for obj in passages_data %}
+    <h3><a href="/passage/{{ obj.pid }}">标题：{{ obj.title }}</a></h3>
+    <div>摘要：{{ obj.abstract }}</div>
+    <hr>
+{% endfor %}
+</body>
+</html>

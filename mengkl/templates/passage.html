@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengkl Blog</title>
+    <base href="/">
+    <link rel="stylesheet" href="static/md_css/monokai.css">
+    <link rel="stylesheet" href="static/css/mengklpassage.css">
+
+</head>
+<body>
+
+<!--[00] [头部导航栏] [Start] -->
+<div class="mengkl_00_container">
+    <div class="mengkl_00_border mengkl_00_center">
+        <a href="" class="mengkl_00_avatar">
+            <img href="" class="mengkl_00_img" src="https://q1.qlogo.cn/g?b=qq&nk=599487077&s=640" alt=""/>
+        </a>
+        {% for obj in app_name %}
+            <a href="{{ obj.my_apps_en }}/" class="mengkl_00_btn mengkl_00_btn_a three-d">
+                <div class="mengkl_00_btn_text_center">
+                    {{ obj.my_apps_cn }}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+<!--[00] [头部导航栏] [End] -->
+
+<div class="mengkl_container">
+    <!--[01] [文章Img] [Start] -->
+    <div class="mengkl_01_1">
+
+        {% if passage.absimg %}
+            <div class="mengkl_01_1_img_bg"
+                 style="background: url('{{ passage.absimg }}') no-repeat;">
+                <div class="mengkl_valign mengkl_01_1_text">
+                    <div class="mengkl_center">
+                        <h1>{{ passage.title }}</h1>
+                        <h5>作者: {{ passage.author }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:{{ passage.created_time }}</h5>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="mengkl_01_1_img_bg"
+                 style="background: url('https://api.hanfenga7.cn/RandomImg/V1/api.php?type=img&sj=xxx') no-repeat;">
+                <div class="mengkl_valign mengkl_01_1_text">
+                    <div class="mengkl_center">
+                        <h1>{{ passage.title }}</h1>
+                        <h5>作者: {{ passage.author }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:{{ passage.created_time }}</h5>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+    <!--[01] [文章Img] [End] -->
+
+    <br/>
+
+    <!--[02] [文章Tag] [Start] -->
+    <div class="mengkl_01_2">
+        {% for obj in passage.tags.all %}
+            <div class="mengkl_01_2_tag mengkl_01_2_tag_line">
+                <a href="/search/search_from_passage/{{ obj.name }}" class="mengkl_01_2_tag_text"
+                   style="text-decoration: none;color: black;">{{ obj.name }}</a>
+            </div>
+        {% endfor %}
+    </div>
+    <!--[02] [文章Tag] [End] -->
+
+    <br/>
+
+    <!--[03] [文章正文] [Start] -->
+    <div class="mengkl_01_3">
+        <div class="mengkl_01_3_zw">
+            {{ passage.body|safe }}
+        </div>
+    </div>
+    <!--[03] [文章正文] [End] -->
+
+    <br/>
+
+    <!--[04] [文章评论展示] [Start] -->
+    {% for obj in comment %}
+        <div class="mengkl_01_5">
+            <div class="mengkl_grid_container">
+                {% if obj.commentator_website %}
+                    <span class="mengkl_01_5_left">
+                    <a href="https://{{ obj.commentator_website }}" class="a-tag-color-black"
+                       style="text-decoration: none;">
+                    <span>
+                        评论者 : {{ obj.commentator }} 留下了自己的网站
+                    </span>
+                    </a>
+                    </span>
+                {% else %}
+                    <div class="mengkl_01_5_left">
+                        评论者 : {{ obj.commentator }}
+                    </div>
+                {% endif %}
+                <div class="mengkl_01_5_right">
+                    {{ obj.created_time }}
+                </div>
+            </div>
+            <div class="mengkl_01_5_comment">
+                <p>
+                    {{ obj.comment }}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+    <br/>
+    <!--[04] [文章评论展示] [End] -->
+
+    <!--[05] [文章评论] [Start] -->
+    <div id="comment-container">
+    </div>
+    <div class="mengkl_01_4">
+        <div class="mengkl_valign mengkl_01_4_A1">
+            <h2>添加新评论</h2>
+        </div>
+        <form id="comment-form" class="mengkl_01_4_A2">
+            {% csrf_token %}
+            <p>称呼&nbsp;:&nbsp;</p>
+            <label class="mengkl_01_4_A2_textfield_label">
+                <input type="text" name="commentator" class="mengkl_01_4_A2_textfield_input"/>
+            </label>
+            <br/>
+
+            <p>网站&nbsp;:&nbsp;</p>
+            <label>
+                <input type="text" name="commentator_website" id="url-input" placeholder="选填"
+                       class="mengkl_01_4_A2_textfield_input">
+            </label>
+            <br/>
+
+            <p>内容&nbsp;:&nbsp;</p>
+            <label>
+                <textarea name="comment" placeholder="已开启评论精选功能(雾)"
+                          class="mengkl_01_4_A2_textfield_input_1"></textarea>
+            </label>
+            <br/><br/>
+            <button type="submit" class="mengkl_01_4_A2_Submit">提交</button>
+        </form>
+    </div>
+    <!--[05] [文章评论] [End] -->
+
+
+</div>
+
+<br/><br/><br/><br/>
+</body>
+<script>
+
+    // 获取表单元素
+    const form = document.getElementById('comment-form');
+    const input = document.getElementById("url-input");
+    const container = document.getElementById('comment-container');
+
+    // 表单提交处理
+    form.addEventListener('submit', e => {
+
+        e.preventDefault();
+
+        // 验证必填
+        if (!form.commentator.value || !form.comment.value) {
+            alert('必填项不能为空');
+            return;
+        }
+
+        // 验证域名
+        try {
+            validateURL(input.value);
+        } catch (err) {
+            alert(err.message);
+            return;
+        }
+        // 获取表单数据
+        const formData = new FormData(form)
+        // 构造请求参数
+        const data = Object.fromEntries(formData)
+        // 异步提交
+        fetch('/comment/{{ passage.pid }}/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // 清空输入框
+                    form.commentator.value = ''
+                    form.comment.value = ''
+                    form.commentator_website.value = ''
+                    // 渲染新增的评论
+                    const newComment = {
+                        comment: data.comment,
+                        commentator: data.commentator,
+                        commentator_website: data.commentator_website,
+                        created_time: data.created_time,
+                        input_value: data.input_value,
+                    }
+                    renderComment(newComment)
+                }
+            })
+
+    });
+
+    // 验证域名格式
+    function validateURL(url) {
+
+        const pattern = /^(\s*|(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.[A-Za-z0-9-]{1,63})*\.[A-Za-z]{2,63})$/;
+
+        if (!pattern.test(url)) {
+            throw new Error('网站域名格式不正确');
+        }
+
+    }
+
+
+    function renderComment(comment) {
+        const div = document.createElement('div')
+
+        if (comment.commentator_website === '') {
+            div.innerHTML = `
+    <div id="comment-container" class="mengkl_01_5">
+        <div class="mengkl_grid_container">
+            <div class="mengkl_01_5_left">
+                评论者 : ${comment.commentator}
+            </div>
+            <div class="mengkl_01_5_right">
+                ${comment.created_time}
+            </div>
+        </div>
+        <div class="mengkl_01_5_comment">
+            <p>
+                ${comment.comment}
+            </p>
+        </div>
+    </div>
+    <br/>
+`
+        } else {
+            div.innerHTML = `
+    <div id="comment-container" class="mengkl_01_5">
+        <div class="mengkl_grid_container">
+            <a href='https://${comment.commentator_website}' class="mengkl_01_5_left">
+                评论者 : ${comment.commentator} 留下了自己的网站
+            </a>
+            <div class="mengkl_01_5_right">
+                ${comment.created_time}
+            </div>
+        </div>
+        <div class="mengkl_01_5_comment">
+            <p>
+                ${comment.comment}
+            </p>
+        </div>
+    </div>
+    <br/>
+`
+        }
+
+        container.appendChild(div)
+    }
+
+
+</script>
+
+</html>

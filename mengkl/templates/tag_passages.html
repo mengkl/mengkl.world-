@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这是tag归档</title>
+</head>
+<body>
+<h1>Articles with Tag: {{ tag.name }}</h1>
+<ul>
+    {% for passage in passages_with_tag %}
+        <li><a href="{{ passage.get_absolute_url }}">{{ passage.title }}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
