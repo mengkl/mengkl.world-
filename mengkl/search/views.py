@@ -52,7 +52,7 @@ def search_by_tag_name(request, tag_name):
 def search_from_passage(request, tag_name):
     tags_with_counts = Tag.objects.annotate(passages_count=Count('passages'))
     passages = Passage.objects.filter(tags__name=tag_name)
-    app_name = Myapps.objects.all()
+    app_name = Myapp.objects.all()
     data = []
     for passage in passages:
         data.append({'pid': passage.pid, 'title': passage.title})
