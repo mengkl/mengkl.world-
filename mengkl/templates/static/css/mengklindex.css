@@ -1,3 +1,14 @@
+/*[公共]*/
+@font-face {
+    font-family: KLGY;
+    src: url(https://cdn.fallsoft.cn/gh/LychApe/DreamCat@fonts/fonts/SmileySans-Oblique.ttf.woff2);
+}
+
+@font-face {
+    font-family: KLGY2;
+    src: url(https://js.fallsoft.cn/LXGWWenKai-Regular.ttf);
+}
+
 .a {
     text-decoration: none;
 }
@@ -164,6 +175,7 @@ body {
 }
 
 .mengkl_01_left_card_3 p {
+    font-family: KLGY2;
     text-align: center;
     word-break: break-word;
     margin: 0;
@@ -204,6 +216,7 @@ body {
 }
 
 .mengkl_02_card_1_0 h2 {
+    font-family: KLGY2;
     padding: 6px;
     margin: 0;
 }
@@ -214,6 +227,7 @@ body {
 }
 
 .mengkl_02_card_1_1 h5 {
+    font-family: KLGY2;
     padding: 18px;
     margin: 0;
 }
@@ -237,6 +251,7 @@ body {
 }
 
 .mengkl_02_card_1_2_col1 h3 {
+    font-family: KLGY2;
     padding: 18px;
     margin: 0;
     font-weight: 500;
@@ -420,7 +435,7 @@ body {
     }
 
     .mengkl_02_right_row {
-        grid-column: 1 / span 11;
+        grid-column: 1 / span 12;
         margin-top: 6vh;
         font-size: 16px;
     }

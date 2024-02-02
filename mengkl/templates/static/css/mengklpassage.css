@@ -1,3 +1,9 @@
+/*[公共]*/
+@font-face {
+    font-family: KLGY2;
+    src: url(https://js.fallsoft.cn/LXGWWenKai-Regular.ttf);
+}
+
 body {
     background-image: radial-gradient(73% 147%, #E1ECC8 59%, #F7FFE5 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.50) 47%, rgba(0, 0, 0, 0.50) 100%);
     background-blend-mode: screen;
@@ -184,10 +190,12 @@ body {
     height: 20vh;
     text-align: center;
     z-index: 3;
+    width: 100%;
 }
 
 .mengkl_01_1_text h1,
 .mengkl_01_1_text h5 {
+    font-family: KLGY2;
     color: #eef2f5;
 }
 
@@ -263,6 +271,7 @@ body {
 .mengkl_01_3_zw li,
 .mengkl_01_3_zw a,
 .mengkl_01_3_zw code {
+    font-family: KLGY2;
     color: rgba(0, 0, 0, .54);
     line-height: 1.7;
     overflow: hidden;
@@ -286,6 +295,7 @@ body {
 .mengkl_01_4_A1 h2 {
     margin: 0;
     color: white;
+    font-family: KLGY2;
 }
 
 .mengkl_01_4_A2 {
