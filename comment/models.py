@@ -6,7 +6,7 @@ from passage.models import Passage
 
 
 # Create your models here.
-class Comments(models.Model):
+class Comment(models.Model):
     passage = models.ForeignKey(Passage, blank=True, null=True, on_delete=models.CASCADE, related_name='comments')
 
     comment = models.TextField()

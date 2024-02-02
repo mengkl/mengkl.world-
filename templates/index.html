@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mengkl Blog</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/mengklindex.css'%}">    
     <base href="/">
-    <link type="text/css" rel="stylesheet" href="static/css/mengklindex.css">
 </head>
 <body>
 <!--[00] [头部导航栏] [Start] -->
 <div class="mengkl_00_container">
     <div class="mengkl_00_border mengkl_00_center">
-        <a href="">
+        <a href="" class="mengkl_00_avatar">
             <img href="" class="mengkl_00_img" src="https://q1.qlogo.cn/g?b=qq&nk=599487077&s=640" alt=""/>
         </a>
         {% for obj in app_name %}
@@ -107,7 +108,7 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="mengkl_03_col" style="margin-top: 9px;margin-left: -18px;">
+                    <div class="mengkl_03_col">
                         <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
                     </div>
                     <div class="mengkl_03_col">
@@ -141,7 +142,7 @@
 
     const days = Math.floor(totalSeconds / (3600 * 24));
 
-    const target2 = "本站勉强运行:" + years + "年" + months + "月" + days + "天";
+    const target2 = "勉强运行:" + years + "年" + months + "月" + days + "天";
 
     //[公共] 初始随机字符范围
     const src = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';

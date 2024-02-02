@@ -2,7 +2,7 @@ import json
 
 from django.http import JsonResponse
 
-from comment.models import Comments
+from comment.models import Comment
 from passage.models import Passage
 
 

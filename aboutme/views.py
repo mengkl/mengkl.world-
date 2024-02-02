@@ -1,7 +1,7 @@
 import markdown
 from django.shortcuts import render
 
-from index.models import Myapps
+from index.models import Myapp
 from .models import AboutMe
 
 extensions = ['markdown.extensions.extra', 'markdown.extensions.codehilite', 'markdown.extensions.abbr',
@@ -17,7 +17,7 @@ extensions = ['markdown.extensions.extra', 'markdown.extensions.codehilite', 'ma
 
 def about_me(request):
     a = AboutMe.objects.all()
-    app_name = Myapps.objects.all()
+    app_name = Myapp.objects.all()
 
     for raw_body in a:
         raw_body.body_after_changed = markdown.markdown(raw_body.body, extensions=extensions)

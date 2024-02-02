@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mengkl Blog</title>
     <base href="/">
     <link rel="stylesheet" type="text/css" href="static/css/mengklsearch.css">
@@ -11,7 +11,7 @@
 <!--[00] [头部导航栏] [Start] -->
 <div class="mengkl_00_container">
     <div class="mengkl_00_border mengkl_00_center">
-        <a href="">
+        <a href="" class="mengkl_00_avatar">
             <img href="" class="mengkl_00_img" src="https://q1.qlogo.cn/g?b=qq&nk=599487077&s=640" alt=""/>
         </a>
         {% for obj in app_name %}
@@ -50,7 +50,7 @@
         <!--[03] [Tag] [Start] -->
         <div class="mengkl_03_col">
             <div class="mengkl_03_card">
-                <div class="mengkl_03_c_grid">
+                <div class="mengkl_03_c_flex">
                     {% for obj in tags_with_counts %}
                         <div class="mengkl_03_c_col">
                             <a href="search/tag/{{ obj.name }}"

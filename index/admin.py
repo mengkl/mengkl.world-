@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Myapps
+from .models import Myapp
 
 # Register your models here.
 
-admin.site.register(Myapps)
+admin.site.register(Myapp)
