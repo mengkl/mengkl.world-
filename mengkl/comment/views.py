@@ -19,7 +19,7 @@ def comment_add(request, pid):
         commentator_website = post_body.get('commentator_website')
 
         # 创建并保存评论
-        new_comment = Comments.objects.create(
+        new_comment = Comment.objects.create(
             passage=passage,
             commentator=commentator,
             comment=comment,
